@@ -4,6 +4,8 @@ export default function DisplayInfo(props) {
 
   return (
     <div>
+      {/* display the 4 fields of information */}
+      {/* First Name */}
       <div className="mb-4">
         <label className="input-label">First Name:</label>
         <input
@@ -21,6 +23,7 @@ export default function DisplayInfo(props) {
           placeholder="First Name"
         />
       </div>
+      {/* Last Name */}
       <div className="mb-8">
         <label className="input-label">Last Name:</label>
         <input
@@ -38,6 +41,7 @@ export default function DisplayInfo(props) {
           placeholder="Last Name"
         />
       </div>
+      {/* Phone Number */}
       <div className="mb-4">
         <label className="input-label">Phone Number:</label>
         <input
@@ -55,6 +59,7 @@ export default function DisplayInfo(props) {
           placeholder="Phone Number"
         />
       </div>
+      {/* Email Addres */}
       <div className="mb-8">
         <label className="input-label">Email Address:</label>
         <input

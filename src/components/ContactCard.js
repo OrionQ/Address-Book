@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { getContacts, setContacts, getIndex } from "./ListData";
 
+// Delete the contact from the contact list by its index
 function deleteContact(index) {
   return setContacts(
     getContacts().filter((contact) => contact !== getContacts()[index])
   );
 }
 
+// Render the Contact card with in two different views
 export default function ContactCard(props) {
   const contact = props.data;
-  const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState(false); // if the contact card is selected, expand more information
   const [pop, setPop] = useState(false);
   return (
     <div>
@@ -23,6 +25,7 @@ export default function ContactCard(props) {
           src="./default-user.png"
           alt="Profile-pic"
         />
+        {/* get the profile picture (currently only have default) */}
         <div className={expand ? "expand-text-area" : "unexpand-text-area"}>
           <div
             className={
@@ -31,6 +34,7 @@ export default function ContactCard(props) {
                 : "space-y-0.5 text-2xl text-primary font-bold duration-500"
             }
           >
+            {/* render first name, last name, phone number, email(if selected) */}
             {contact.first_name + " " + contact.last_name}
             {expand ? (
               <div>
@@ -40,6 +44,8 @@ export default function ContactCard(props) {
                 <p className="text-primary font-medium text-xl p-2 duration-200">
                   {contact.email}
                 </p>
+
+                {/* options to edit or delete this contact */}
                 <Link to={`/edit-profile/${contact.id}`}>
                   <button className="bg-white text-button border-2 border-button rounded-xl px-4 p-2 mt-2 text-xl hover:bg-hover duration-200 mr-4">
                     Edit
@@ -97,6 +103,7 @@ export default function ContactCard(props) {
                 </div>
               </div>
               <div className="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                {/* Confirm deleting contact */}
                 <Link to="/">
                   <button
                     type="button"

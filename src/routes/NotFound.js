@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// Render a not found page with all other paths that are invalid
 export default function NotFound() {
   return (
     <div>

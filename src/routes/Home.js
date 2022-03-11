@@ -1,8 +1,9 @@
-import ContactCard from "./ContactCard";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { getContacts } from "./ListData";
+import { getContacts } from "../components/ListData";
+import ContactCard from "../components/ContactCard";
 
+// The contact listing page aka the homepage
 export default function Home() {
   const [contact_list, setContact] = useState(getContacts());
   const [filtered, setFilter] = useState("");
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="relative">
         <form>
           <div className="">
+          {/* render the search bar and the add new contact button */}
             <input
               onChange={(e) => setFilter(e.target.value)}
               className="input-box rounded-xl h-full mx-2 p-3 w-64"
@@ -25,6 +27,7 @@ export default function Home() {
           </div>
 
           <div>
+          {/* display each contact in breif with an map function (after filtering) */}
             <div className="block">
               {contact_list
                 .filter(
