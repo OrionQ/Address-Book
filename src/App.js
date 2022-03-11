@@ -4,6 +4,7 @@ import Home from "./Home";
 import CreateProfile from "./CreateProfile";
 import EditProfile from "./EditProfile";
 import Header from "./Header";
+import NotFound from "./NotFound";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />}>
             <Route path=":profileID" element={<EditProfile />} />
           </Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </Router>
     </div>

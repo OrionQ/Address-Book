@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getContacts, setContacts, getIndex } from "./ListData";
 
 function deleteContact(index) {
@@ -16,28 +16,14 @@ export default function ContactCard(props) {
     <div>
       <div
         onClick={() => setExpand(!expand)}
-        className={
-          expand
-            ? "py-20 px-10 max-w-2xl rounded-xl lg:mx-auto bg-white shadow-md hover:shadow-xl duration-300 mx-8 my-4 ease-in-out"
-            : "py-20 px-10 max-w-2xl rounded-xl lg:mx-auto bg-white shadow-md hover:shadow-xl duration-300 space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-5 mx-8 my-4 ease-in-out"
-        }
+        className={expand ? "expand-card" : "unexpand-card"}
       >
         <img
-          className={
-            expand
-              ? "block mx-auto h-32 rounded-full pt-6 duration-500 ease-in-out"
-              : "block mx-auto h-20 rounded-full sm:mx-0 sm:shrink-0 duration-500 ease-in-out"
-          }
+          className={expand ? "expand-image" : "unexpand-image"}
           src="./default-user.png"
           alt="Profile-pic"
         />
-        <div
-          className={
-            expand
-              ? "px-8 py-3 pb-10 duration-500"
-              : "text-center space-y-2 lg:text-left duration-500"
-          }
-        >
+        <div className={expand ? "expand-text-area" : "unexpand-text-area"}>
           <div
             className={
               expand
@@ -45,7 +31,7 @@ export default function ContactCard(props) {
                 : "space-y-0.5 text-2xl text-primary font-bold duration-500"
             }
           >
-            {contact.first_name}&nbsp;{contact.last_name}
+            {contact.first_name + " " + contact.last_name}
             {expand ? (
               <div>
                 <p className="text-primary font-medium text-xl p-2 duration-200">
@@ -54,11 +40,11 @@ export default function ContactCard(props) {
                 <p className="text-primary font-medium text-xl p-2 duration-200">
                   {contact.email}
                 </p>
-                <NavLink to="/edit-profile">
-                  <button className="bg-white text-button rounded-xl px-4 p-2 mt-2 text-xl hover:bg-hover duration-200 mr-4">
+                <Link to={`/edit-profile/${contact.id}`}>
+                  <button className="bg-white text-button border-2 border-button rounded-xl px-4 p-2 mt-2 text-xl hover:bg-hover duration-200 mr-4">
                     Edit
                   </button>
-                </NavLink>
+                </Link>
 
                 <button
                   onClick={() => setPop(true)}
@@ -75,10 +61,12 @@ export default function ContactCard(props) {
           </div>
         </div>
       </div>
+
       {/* Modal pop-up message */}
+
       {pop ? (
-        <div className="fixed z-10 inset-0 overflow-y-auto">
-          <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="main-modal">
+          <div className="position">
             <div className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
 
             <span
@@ -88,7 +76,7 @@ export default function ContactCard(props) {
               &#8203;
             </span>
 
-            <div className="relative inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div className="modal-box">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
@@ -109,22 +97,22 @@ export default function ContactCard(props) {
                 </div>
               </div>
               <div className="bg-white px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <NavLink to="/">
+                <Link to="/">
                   <button
                     type="button"
                     onClick={() => {
                       props.onClick(deleteContact(getIndex(contact)));
                       setPop(false);
                     }}
-                    className="w-full inline-flex justify-center rounded-xl border border-transparent shadow-sm px-4 py-2 bg-red text-base font-medium text-white hover:opacity-75 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm duration-200"
+                    className="modal-delete-button"
                   >
                     Delete
                   </button>
-                </NavLink>
+                </Link>
                 <button
                   type="button"
                   onClick={() => setPop(false)}
-                  className="mt-3 w-full inline-flex justify-center rounded-xl border-3 border-primary px-4 py-2 bg-white text-base font-medium text-primary hover:bg-hover  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm duration-200"
+                  className="modal-cancel-button"
                 >
                   Cancel
                 </button>
