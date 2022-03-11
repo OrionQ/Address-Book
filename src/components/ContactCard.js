@@ -15,7 +15,7 @@ export default function ContactCard(props) {
   const [expand, setExpand] = useState(false); // if the contact card is selected, expand more information
   const [pop, setPop] = useState(false);
   return (
-    <div>
+    <div name="contact card">
       <div
         onClick={() => setExpand(!expand)}
         className={expand ? "expand-card" : "unexpand-card"}

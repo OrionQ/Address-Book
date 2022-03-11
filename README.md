@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Address Book
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+This is a simple Address Book Frontend Project that allows you to ADD, EDIT, DELETE, and do search on a contact list that is embedded in the project.
+
+Built with `TailwindCSS` and [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

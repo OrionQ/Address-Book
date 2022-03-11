@@ -38,11 +38,14 @@ export default function EditProfile() {
             <DisplayInfo data={detail} setDetail={setDetail} />
             {/* go back to main page */}
             <Link to="/">
-              <button className="cancel-button">Undo Changes</button>
+              <button name="undo" className="cancel-button">
+                Undo Changes
+              </button>
             </Link>
             {/* update information if all fields are valid */}
             <Link to="/">
               <button
+                name="update"
                 disabled={!detail.first_name && !detail.last_name}
                 onClick={() => UpdateInfo(index, detail)}
                 className="submit-button"

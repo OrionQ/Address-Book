@@ -37,11 +37,14 @@ export default function CreateProfile() {
             <DisplayInfo data={detail} setDetail={setDetail} />
             {/* go back to main page */}
             <Link to="/">
-              <button className="cancel-button w-24">Cancel</button>
+              <button name="Cancel" className="cancel-button w-24">
+                Cancel
+              </button>
             </Link>
             {/* create and save information if all fields are valid */}
             <Link to="/">
               <button
+                name="Save"
                 disabled={!detail.first_name && !detail.last_name}
                 onClick={() => SubmitContact(detail)}
                 className="submit-button"
