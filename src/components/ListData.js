@@ -53,6 +53,48 @@ let contact_list = [
 
 // Get the whole contact list
 export function getContacts() {
+  // sort the array based on their name
+  contact_list.sort((a, b) => {
+    const lastA = a.last_name.toLowerCase();
+    const lastB = b.last_name.toLowerCase();
+    const firstA = a.first_name.toLowerCase();
+    const firstB = b.last_name.toLowerCase();
+
+    if (lastA === "" && lastB !== "") {
+      // Compare first name to last name if one of the contact does not have a last name
+      if (firstA < lastB) {
+        return -1;
+      }
+      if (firstA > lastB) {
+        return 1;
+      }
+    }
+
+    if (lastB === "" && lastA !== "") {
+      if (lastA < firstB) {
+        return -1;
+      }
+      if (lastA > firstB) {
+        return 1;
+      }
+    }
+
+    // Compare last names first
+    if (lastA < lastB) {
+      return -1;
+    }
+    if (lastA > lastB) {
+      return 1;
+    }
+    // If they have same last name, compare first name instead
+    if (firstA < firstB) {
+      return -1;
+    }
+    if (firstA > firstB) {
+      return 1;
+    }
+    return 0;
+  });
   return contact_list;
 }
 

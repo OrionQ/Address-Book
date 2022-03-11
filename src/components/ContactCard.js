@@ -31,11 +31,14 @@ export default function ContactCard(props) {
             className={
               expand
                 ? "font-bold text-3xl mb-2 duration-500"
-                : "space-y-0.5 text-2xl text-primary font-bold duration-500"
+                : "space-y-0.5 text-2xl text-primary font-semibold duration-500"
             }
           >
             {/* render first name, last name, phone number, email(if selected) */}
-            {contact.first_name + " " + contact.last_name}
+            {contact.first_name + " "}
+            <span className={expand ? "" : "font-bold"}>
+              {contact.last_name}
+            </span>
             {expand ? (
               <div>
                 <p className="text-primary font-medium text-xl p-2 duration-200">
