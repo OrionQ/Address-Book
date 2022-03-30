@@ -49,6 +49,7 @@ let contact_list = [
     phone_number: "000000000",
     email: "molly@ncsu.edu",
   },
+  
 ];
 
 // Get the whole contact list
