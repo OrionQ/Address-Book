@@ -45,7 +45,9 @@ export default function DisplayInfo(props) {
       <div className="mb-4">
         <label className="input-label">Phone Number:</label>
         <input
-          className="input-box"
+          className={`input-box ${
+            detail.phone_number.length !== 10 ? "border-red" : ""
+          }`}
           id="phone"
           type="tel"
           value={detail.phone_number}
@@ -58,6 +60,11 @@ export default function DisplayInfo(props) {
           }}
           placeholder="Phone Number"
         />
+        {detail.phone_number.length !== 10 ? (
+          <p class="text-red text-xs italic leading-tight lg:ml-36 md:ml-24 sm:ml-0">Make sure the phone number has 10 digits.</p>
+        ) : (
+          ""
+        )}
       </div>
       {/* Email Addres */}
       <div className="mb-8">
