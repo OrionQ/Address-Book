@@ -34,7 +34,10 @@ export default function Home() {
           <div className="">
             {/* render the search bar and the add new contact button */}
             <input
-              onChange={(e) => setFilter(e.target.value)}
+              onChange={(e) => {
+                setFilter(e.target.value);
+                setCurrentPage(1);
+              }}
               className="input-box rounded-xl h-full mx-2 p-3 w-64"
               placeholder="Search Contact By Name"
             />
