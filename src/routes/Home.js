@@ -25,7 +25,7 @@ export default function Home() {
     const firstPageIndex = (currentPage - 1) * pageLength;
     const lastPageIndex = firstPageIndex + pageLength;
     return filteredContact.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+  }, [currentPage, filteredContact]);
 
   return (
     <div>
@@ -63,7 +63,7 @@ export default function Home() {
         <Pagination
           className="w-full flex justify-center"
           currentPage={currentPage}
-          totalCount={contact_list.length}
+          totalCount={filteredContact.length}
           pageSize={pageLength}
           onPageChange={(page) => setCurrentPage(page)}
         />
