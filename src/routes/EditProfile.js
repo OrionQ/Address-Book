@@ -46,7 +46,10 @@ export default function EditProfile() {
             <Link to="/">
               <button
                 name="update"
-                disabled={(!detail.first_name && !detail.last_name) || !(detail.phone_number.length === 10)}
+                disabled={
+                  (!detail.first_name && !detail.last_name) ||
+                  !(detail.phone_number.length === 10)
+                }
                 onClick={() => UpdateInfo(index, detail)}
                 className="submit-button"
               >

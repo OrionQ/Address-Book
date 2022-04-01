@@ -60,8 +60,10 @@ export default function DisplayInfo(props) {
           }}
           placeholder="Phone Number"
         />
-        {detail.phone_number.length !== 10 ? (
-          <p class="text-red text-xs italic leading-tight lg:ml-36 md:ml-24 sm:ml-0">Make sure the phone number has 10 digits.</p>
+        {detail.phone_number.length !== 10 || isNaN(detail.phone) ? (
+          <p class="text-red text-xs italic leading-tight lg:ml-36 md:ml-24 sm:ml-0">
+            Make sure it is a 10-digit number.
+          </p>
         ) : (
           ""
         )}

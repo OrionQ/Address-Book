@@ -45,7 +45,10 @@ export default function CreateProfile() {
             <Link to="/">
               <button
                 name="Save"
-                disabled={!detail.first_name && !detail.last_name}
+                disabled={
+                  (!detail.first_name && !detail.last_name) ||
+                  !(detail.phone_number.length === 10)
+                }
                 onClick={() => SubmitContact(detail)}
                 className="submit-button"
               >
